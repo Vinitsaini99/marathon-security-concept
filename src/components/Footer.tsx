@@ -70,12 +70,20 @@ export function Footer() {
       </div>
 
       <div className="border-t border-navy/10">
-        <div className="mx-auto flex max-w-[1440px] flex-col gap-2 px-4 py-5 text-xs text-ink/55 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-10">
-          <p>
-            © {new Date().getFullYear()} Concept demo for {company.legalName}. Prepared by
-            Euonus IT.
+        <div className="mx-auto flex max-w-[1440px] flex-col gap-2 px-4 py-5 text-xs text-ink/55 sm:px-6 lg:px-10">
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+            <p>
+              © {new Date().getFullYear()} {company.legalName} ({company.brand}). All rights
+              reserved.
+            </p>
+            <p>Concept demo prepared by Euonus IT · Not the live production website.</p>
+          </div>
+          <p className="max-w-4xl leading-relaxed text-ink/45">
+            This website design, layout, copy structure and source code are protected by
+            copyright. Unauthorised copying, reproduction, redistribution or reuse of any
+            part of this material is prohibited without prior written permission from Euonus
+            IT / {company.legalName}.
           </p>
-          <p>Frontend demonstration only · No production systems were modified.</p>
         </div>
       </div>
     </footer>
