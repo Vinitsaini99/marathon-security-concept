@@ -1,5 +1,5 @@
 import { MapPin } from "lucide-react"
-import { rajasthanCities } from "../data/content"
+import { confirmedLocations } from "../data/content"
 import { SectionHeading } from "./SectionHeading"
 
 export function Coverage() {
@@ -8,26 +8,33 @@ export function Coverage() {
       <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10">
         <div className="reveal">
           <SectionHeading
-            eyebrow="Rajasthan Coverage"
-            title="Target cities across Rajasthan"
-            text="Headquartered in Jaipur with deployment support for industrial corridors, commercial centres and residential communities statewide."
+            eyebrow="Rajasthan & Regional Coverage"
+            title="Confirmed service locations"
+            text="Only locations and footprint details published by Marathon Security / Zetouch are shown here. This concept page does not claim statewide coverage beyond confirmed information."
             light
           />
         </div>
 
-        <div className="mt-10 grid grid-cols-2 gap-3 sm:mt-12 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-          {rajasthanCities.map((city) => (
+        <div className="mt-10 grid gap-4 sm:mt-12 sm:grid-cols-3">
+          {confirmedLocations.map((location) => (
             <article
-              key={city.name}
-              className="reveal rounded-xl border border-white/10 bg-white/5 px-4 py-4 transition hover:border-gold/40 hover:bg-white/8"
+              key={location.name}
+              className="reveal rounded-2xl border border-white/10 bg-white/5 p-5 sm:p-6"
             >
-              <div className="flex items-center gap-2">
-                <MapPin className="h-4 w-4 shrink-0 text-gold" />
-                <h3 className="font-heading text-sm font-bold text-white sm:text-base">
-                  {city.name}
-                </h3>
+              <div className="flex items-start gap-3">
+                <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-gold" aria-hidden />
+                <div>
+                  <p className="text-xs font-semibold tracking-[0.14em] text-gold-soft uppercase">
+                    {location.note}
+                  </p>
+                  <h3 className="mt-1.5 font-heading text-lg font-bold text-white">
+                    {location.name}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-white/65">
+                    {location.detail}
+                  </p>
+                </div>
               </div>
-              <p className="mt-2 text-xs text-white/60 sm:text-[13px]">{city.note}</p>
             </article>
           ))}
         </div>

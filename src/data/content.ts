@@ -8,12 +8,11 @@ export const company = {
   iso: "ISO 9001:2015 Certified Organization",
   headOffice: "Head Office — Jaipur, Rajasthan",
   corporateOffice: "Corporate Office — Ahmedabad, Gujarat",
+  /** Verbatim coverage statement aligned with marathonsecurity.in FAQ */
   coverage:
-    "Security coverage across key Rajasthan cities and industrial corridors, with reach into North and Western India.",
+    "Head Office in Jaipur (Rajasthan) and Corporate Office in Ahmedabad (Gujarat), servicing sites across North and Western India including industrial hubs, construction infrastructure projects, and metro centres.",
   motto: "Reliability, Quality, and Results",
   referenceSite: "https://marathonsecurity.in/",
-  experienceYears: "10+",
-  experienceLabel: "Years of verified security experience",
 }
 
 export const navLinks = [
@@ -26,10 +25,11 @@ export const navLinks = [
   { label: "Contact", href: "#contact" },
 ]
 
+/** Hero trust chips — only claims supported by public company materials */
 export const trustItems = [
-  "Verified field experience",
-  "Recognised enterprise clients",
-  "ISO 9001:2015 certified",
+  "ISO 9001:2015 certified organization",
+  "Head Office — Jaipur, Rajasthan",
+  "Clients listed on the official website",
 ]
 
 /** Client logos/names publicly listed on marathonsecurity.in */
@@ -85,7 +85,7 @@ export const aboutFeatures = [
 export const primaryServices = [
   {
     title: "Industrial Security",
-    text: "Specialized security management for factories, manufacturing plants, warehouses, mines and large industrial campuses across Rajasthan.",
+    text: "Specialized security management for factories, manufacturing plants, warehouses and large industrial campuses.",
     points: [
       "Gate & perimeter control",
       "Shift-based plant coverage",
@@ -95,7 +95,7 @@ export const primaryServices = [
   },
   {
     title: "Corporate Security",
-    text: "Professional guarding and supervision for corporate offices, commercial centres, IT parks and business premises.",
+    text: "Professional guarding and supervision for corporate offices, commercial centres and business premises.",
     points: [
       "Access & visitor management",
       "Lobby and floor presence",
@@ -134,77 +134,72 @@ export const services = [
   },
 ]
 
-export const rajasthanCities = [
-  { name: "Jaipur", note: "Head office hub" },
-  { name: "Jodhpur", note: "Industrial & commercial" },
-  { name: "Udaipur", note: "Hospitality & industry" },
-  { name: "Kota", note: "Manufacturing corridor" },
-  { name: "Bhiwadi", note: "Industrial belt" },
-  { name: "Alwar", note: "Industrial & SEZ" },
-  { name: "Ajmer", note: "Institutional & commercial" },
-  { name: "Bhilwara", note: "Textile & industry" },
-  { name: "Neemrana", note: "Industrial corridor" },
-  { name: "Bharatpur", note: "Regional coverage" },
-  { name: "Sikar", note: "Regional coverage" },
-  { name: "Chittorgarh", note: "Cement & industry" },
+/**
+ * Confirmed locations only — from public FAQ on marathonsecurity.in.
+ * Do not expand into unverified city lists.
+ */
+export const confirmedLocations = [
+  {
+    name: "Jaipur, Rajasthan",
+    note: "Head Office",
+    detail: "Listed as the company Head Office on the official website.",
+  },
+  {
+    name: "Ahmedabad, Gujarat",
+    note: "Corporate Office",
+    detail: "Listed as the Corporate Office on the official website.",
+  },
+  {
+    name: "North & Western India",
+    note: "Service footprint",
+    detail:
+      "Public materials describe servicing industrial hubs, construction infrastructure projects and metro centres across North and Western India.",
+  },
 ]
 
+/** Industry cards requested for this concept page */
 export const industries = [
   {
-    title: "Manufacturing & Factories",
-    text: "Industrial plants and production sites across Rajasthan requiring disciplined perimeter and shift-based coverage.",
+    title: "Factories",
+    text: "Manufacturing plants and production facilities requiring disciplined perimeter control and shift-based coverage.",
     image:
       "https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?auto=format&fit=crop&w=1200&q=80",
-    alt: "Manufacturing plant floor with industrial equipment",
+    alt: "Factory production floor with industrial equipment",
   },
   {
-    title: "Infrastructure & Construction",
-    text: "Project sites, highways and infrastructure environments that need coordinated security deployment.",
+    title: "Warehouses",
+    text: "Storage and logistics facilities where gate control, asset movement and inventory protection are critical.",
     image:
-      "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1200&q=80",
-    alt: "Active construction and infrastructure project site",
+      "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80",
+    alt: "Warehouse aisle with stacked inventory",
   },
   {
-    title: "Mining & Minerals",
-    text: "Mining operations and mineral processing sites needing perimeter control and workforce management.",
+    title: "Hospitals",
+    text: "Healthcare premises that need orderly access, calm presence and reliable post coverage.",
     image:
-      "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1200&q=80",
-    alt: "Heavy industrial and mining equipment site",
+      "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1200&q=80",
+    alt: "Hospital corridor and healthcare facility environment",
   },
   {
-    title: "Corporate Offices & IT Parks",
+    title: "Corporate Offices",
     text: "Office campuses and commercial workplaces focused on access control and visitor management.",
     image:
       "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80",
-    alt: "Modern corporate office building exterior",
+    alt: "Corporate office building exterior",
   },
   {
-    title: "Tourism & Hospitality",
-    text: "Hotels, resorts and hospitality properties that require discreet, guest-friendly security presence.",
-    image:
-      "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80",
-    alt: "Hospitality and resort property exterior",
-  },
-  {
-    title: "Warehousing & Logistics",
-    text: "Storage and logistics facilities where asset movement and gate control are critical.",
-    image:
-      "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80",
-    alt: "Warehouse aisle with stacked inventory and logistics operations",
-  },
-  {
-    title: "Healthcare & Institutions",
-    text: "Hospitals, clinics and institutions that require orderly access, calm presence and reliable post coverage.",
-    image:
-      "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1200&q=80",
-    alt: "Healthcare facility corridor and reception environment",
-  },
-  {
-    title: "Residential Communities",
-    text: "Gated societies, townships and residential premises supported by round-the-clock monitoring.",
+    title: "Residential Societies",
+    text: "Gated communities, townships and apartment premises supported by round-the-clock monitoring.",
     image:
       "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80",
-    alt: "Residential community and apartment buildings",
+    alt: "Residential society and apartment buildings",
+  },
+  {
+    title: "Construction Sites",
+    text: "Project sites and infrastructure environments that need coordinated security deployment.",
+    image:
+      "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1200&q=80",
+    alt: "Active construction site with scaffolding and equipment",
   },
 ]
 
@@ -235,26 +230,27 @@ export const whyChoose = [
   },
 ]
 
+/** Conversion process: Requirement → Site Assessment → Quotation → Deployment */
 export const processSteps = [
   {
     step: "01",
-    title: "Requirement Assessment",
-    text: "Understand site conditions, risks and the security coverage your operations require.",
+    title: "Requirement",
+    text: "Share your site type, location and security needs through the enquiry form, phone or WhatsApp.",
   },
   {
     step: "02",
-    title: "Security Planning",
-    text: "Define a deployment approach based on assessment findings and operational needs.",
+    title: "Site Assessment",
+    text: "A site security survey helps understand risks, access points and operational coverage requirements.",
   },
   {
     step: "03",
-    title: "Personnel Deployment",
-    text: "Place verified personnel according to the agreed plan and site schedule.",
+    title: "Quotation",
+    text: "Receive a tailored proposal based on the assessment, required posts and deployment plan.",
   },
   {
     step: "04",
-    title: "Continuous Supervision",
-    text: "Maintain supervision, coordination and feedback loops across active posts.",
+    title: "Deployment",
+    text: "Verified personnel are placed according to the agreed plan, with ongoing supervision support.",
   },
 ]
 
@@ -280,23 +276,6 @@ export const testimonials = [
   },
 ]
 
-export const sampleCaseStudies = [
-  {
-    industry: "Infrastructure",
-    requirement: "Multi-shift site coverage with gate control and material movement oversight.",
-    solution: "Customized industrial security deployment with supervisory checks.",
-    outcome: "Sample layout — replace with approved project outcomes after client review.",
-    sample: true,
-  },
-  {
-    industry: "Corporate Campus",
-    requirement: "Visitor management, lobby presence and after-hours monitoring.",
-    solution: "Corporate security staffing with coordinated supervision.",
-    outcome: "Sample layout — awaiting Marathon Security approval for published cases.",
-    sample: true,
-  },
-]
-
 export const faqs = [
   {
     q: "How can we request security services?",
@@ -308,15 +287,15 @@ export const faqs = [
   },
   {
     q: "Do you provide industrial, corporate and residential security?",
-    a: "Yes. Marathon Security offers dedicated industrial, corporate and residential security services, along with guarding, executive protection and security audits.",
+    a: "Yes. Industrial, corporate and residential security are part of the published service offering, along with guarding, executive protection and security audits.",
   },
   {
-    q: "Which cities in Rajasthan do you cover?",
-    a: "Primary coverage includes Jaipur, Jodhpur, Udaipur, Kota, Bhiwadi, Alwar, Ajmer, Bhilwara, Neemrana and other key industrial and commercial centres across Rajasthan.",
+    q: "Which locations do you serve?",
+    a: "Zetouch Security lists a Head Office in Jaipur (Rajasthan) and a Corporate Office in Ahmedabad (Gujarat), servicing sites across North and Western India including industrial hubs, construction infrastructure projects and metro centres.",
   },
   {
     q: "How is security deployment planned?",
-    a: "For standard corporate, industrial or residential contracts, a site security survey informs a customized deployment plan. Emergency requirements may be organized on a faster timeline based on availability.",
+    a: "For standard corporate or industrial contracts, a site security survey informs a customized deployment plan. Emergency requirements may be organized on a faster timeline based on availability.",
   },
   {
     q: "How can businesses request a free quote?",
@@ -324,9 +303,22 @@ export const faqs = [
   },
 ]
 
+export const formServices = [
+  "Industrial Security",
+  "Corporate Security",
+  "Residential Security",
+  "Security Guard Services",
+  "Executive Protection",
+  "Security Audits",
+  "Other / Multiple",
+]
+
 export const images = {
+  /** Professional security personnel imagery for hero */
   hero:
-    "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=2000&q=80",
+    "https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=2000&q=80",
+  /** Fallback / alternate: official site hero asset */
+  heroOfficial: "https://marathonsecurity.in/images/hero1.jpg",
   about:
     "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1400&q=80",
   why:

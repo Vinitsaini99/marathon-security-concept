@@ -2,6 +2,7 @@ import { About } from "./components/About"
 import { Coverage } from "./components/Coverage"
 import { DemoBanner } from "./components/DemoBanner"
 import { FAQ } from "./components/FAQ"
+import { FinalCTA } from "./components/FinalCTA"
 import { Footer } from "./components/Footer"
 import { Hero } from "./components/Hero"
 import { Industries } from "./components/Industries"
@@ -34,6 +35,7 @@ export default function App() {
         <Process />
         <Testimonials />
         <FAQ />
+        <FinalCTA />
         <LeadForm />
       </main>
       <Footer />

@@ -7,7 +7,7 @@ export function FAQ() {
   const [open, setOpen] = useState<number | null>(0)
 
   return (
-    <section className="bg-white py-20 sm:py-24">
+    <section id="faq" className="bg-white py-16 sm:py-20 lg:py-24">
       <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10">
         <div className="reveal">
           <SectionHeading
@@ -17,14 +17,14 @@ export function FAQ() {
           />
         </div>
 
-        <div className="reveal mx-auto mt-12 max-w-3xl divide-y divide-navy/10 rounded-2xl border border-navy/10 bg-surface">
+        <div className="reveal mx-auto mt-10 max-w-3xl divide-y divide-navy/10 rounded-2xl border border-navy/10 bg-surface sm:mt-12">
           {faqs.map((item, index) => {
             const isOpen = open === index
             return (
-              <div key={item.q} className="px-5 sm:px-6">
+              <div key={item.q} className="px-4 sm:px-6">
                 <button
                   type="button"
-                  className="flex w-full items-center justify-between gap-4 py-5 text-left"
+                  className="flex min-h-12 w-full items-center justify-between gap-4 py-4 text-left sm:py-5"
                   aria-expanded={isOpen}
                   onClick={() => setOpen(isOpen ? null : index)}
                 >

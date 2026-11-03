@@ -1,29 +1,25 @@
 import { CheckCircle2, Mail, Phone } from "lucide-react"
 import { useState, type FormEvent } from "react"
-import { company } from "../data/content"
+import { company, formServices } from "../data/content"
 import { WhatsAppIcon } from "./WhatsAppIcon"
 
 type FormState = {
-  fullName: string
+  name: string
   companyName: string
-  email: string
   phone: string
-  industry: string
+  city: string
   service: string
-  location: string
-  personnel: string
+  guards: string
   requirements: string
 }
 
 const initial: FormState = {
-  fullName: "",
+  name: "",
   companyName: "",
-  email: "",
   phone: "",
-  industry: "",
+  city: "",
   service: "",
-  location: "",
-  personnel: "",
+  guards: "",
   requirements: "",
 }
 
@@ -33,48 +29,54 @@ function buildEnquiryMessage(form: FormState) {
     "",
     "I would like a free security quote.",
     "",
-    `Name: ${form.fullName}`,
-    `Company: ${form.companyName}`,
-    `Email: ${form.email}`,
+    `Name: ${form.name}`,
+    `Company / Society: ${form.companyName}`,
     `Phone: ${form.phone}`,
-    `Industry: ${form.industry}`,
-    `Service: ${form.service}`,
-    `Site location: ${form.location}`,
-    form.personnel ? `Personnel required: ${form.personnel}` : null,
+    `City: ${form.city}`,
+    `Security service required: ${form.service}`,
+    `Number of guards required: ${form.guards}`,
     "",
-    "Requirements:",
-    form.requirements,
-  ]
-    .filter(Boolean)
-    .join("\n")
+    "Additional requirements:",
+    form.requirements || "—",
+  ].join("\n")
 }
 
 export function LeadForm() {
   const [form, setForm] = useState<FormState>(initial)
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({})
-  const [submitted, setSubmitted] = useState(false)
+  const [prepared, setPrepared] = useState(false)
   const [channel, setChannel] = useState<"whatsapp" | "email" | null>(null)
 
   function update<K extends keyof FormState>(key: K, value: FormState[K]) {
     setForm((prev) => ({ ...prev, [key]: value }))
+    if (errors[key]) {
+      setErrors((prev) => {
+        const next = { ...prev }
+        delete next[key]
+        return next
+      })
+    }
   }
 
   function validate() {
     const next: Partial<Record<keyof FormState, string>> = {}
-    if (!form.fullName.trim()) next.fullName = "Full name is required"
+    if (!form.name.trim()) next.name = "Name is required"
     if (!form.companyName.trim()) next.companyName = "Company / society name is required"
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) next.email = "Enter a valid email"
-    if (!/^[0-9+\-\s()]{10,}$/.test(form.phone)) next.phone = "Enter a valid phone number"
-    if (!form.industry) next.industry = "Select an industry"
-    if (!form.service) next.service = "Select a service"
-    if (!form.location.trim()) next.location = "Site location is required"
-    if (!form.requirements.trim()) next.requirements = "Please share your requirements"
+    if (!/^[0-9+\-\s()]{10,}$/.test(form.phone.trim())) {
+      next.phone = "Enter a valid 10-digit phone number"
+    }
+    if (!form.city.trim()) next.city = "City is required"
+    if (!form.service) next.service = "Select a security service"
+    if (!form.guards.trim() || Number.isNaN(Number(form.guards)) || Number(form.guards) < 1) {
+      next.guards = "Enter the number of guards required"
+    }
     setErrors(next)
     return Object.keys(next).length === 0
   }
 
-  function sendEnquiry(via: "whatsapp" | "email") {
+  function prepareEnquiry(via: "whatsapp" | "email") {
     if (!validate()) return
+
     const message = buildEnquiryMessage(form)
 
     if (via === "whatsapp") {
@@ -85,18 +87,18 @@ export function LeadForm() {
       )
     } else {
       const subject = encodeURIComponent(
-        `Security enquiry — ${form.service} — ${form.location}`,
+        `Security enquiry — ${form.service} — ${form.city}`,
       )
       window.location.href = `mailto:${company.email}?subject=${subject}&body=${encodeURIComponent(message)}`
     }
 
     setChannel(via)
-    setSubmitted(true)
+    setPrepared(true)
   }
 
   function onSubmit(event: FormEvent) {
     event.preventDefault()
-    sendEnquiry("whatsapp")
+    prepareEnquiry("whatsapp")
   }
 
   return (
@@ -104,14 +106,15 @@ export function LeadForm() {
       <div className="mx-auto grid max-w-[1440px] gap-10 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14 lg:px-10">
         <div className="reveal text-white">
           <p className="text-xs font-semibold tracking-[0.18em] text-gold-soft uppercase">
-            Free Quote
+            Lead enquiry
           </p>
           <h2 className="mt-3 font-heading text-3xl font-bold tracking-tight sm:text-4xl">
-            Get a free security quote for your site.
+            Request a free security quote
           </h2>
           <p className="mt-4 text-base leading-relaxed text-white/70">
-            Share your requirement and our team will respond with a tailored discussion.
-            You can also call or WhatsApp us directly.
+            This concept page has no live backend. Completing the form opens WhatsApp or
+            your email app so you can send the enquiry yourself. No fake “submitted”
+            confirmation is shown.
           </p>
 
           <div className="mt-8 space-y-3">
@@ -119,7 +122,7 @@ export function LeadForm() {
               href={`tel:${company.phoneTel}`}
               className="flex min-h-12 items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
             >
-              <Phone className="h-4 w-4 text-gold" />
+              <Phone className="h-4 w-4 text-gold" aria-hidden />
               Call {company.phoneDisplay}
             </a>
             <a
@@ -137,149 +140,131 @@ export function LeadForm() {
               href={`mailto:${company.email}`}
               className="flex min-h-12 items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
             >
-              <Mail className="h-4 w-4 text-gold" />
+              <Mail className="h-4 w-4 text-gold" aria-hidden />
               {company.email}
             </a>
           </div>
         </div>
 
         <div className="reveal rounded-2xl bg-white p-5 sm:p-8">
-          {submitted ? (
-            <div className="flex min-h-[360px] flex-col items-start justify-center sm:min-h-[420px]">
-              <CheckCircle2 className="h-10 w-10 text-gold" />
+          {prepared ? (
+            <div
+              className="flex min-h-[360px] flex-col items-start justify-center sm:min-h-[420px]"
+              role="status"
+              aria-live="polite"
+            >
+              <CheckCircle2 className="h-10 w-10 text-gold" aria-hidden />
               <h3 className="mt-4 font-heading text-2xl font-bold text-navy">
-                Enquiry ready to send
+                Enquiry draft prepared
               </h3>
               <p className="mt-3 max-w-md text-sm leading-relaxed text-ink/70">
-                Thank you, {form.fullName}. Your enquiry{" "}
-                {channel === "email"
-                  ? "has been opened in your email app"
-                  : "has been opened in WhatsApp"}
-                . Send the message to complete your free quote request.
+                Thank you, {form.name}. Your enquiry was opened in{" "}
+                {channel === "email" ? "your email app" : "WhatsApp"}. Please press{" "}
+                <strong>Send</strong> there to complete the request. Nothing was stored on
+                a server from this concept page.
               </p>
-              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+              <div className="mt-6 flex w-full flex-col gap-3 sm:flex-row">
                 <a
                   href={`tel:${company.phoneTel}`}
-                  className="inline-flex items-center justify-center gap-2 rounded-md bg-navy px-4 py-2.5 text-sm font-semibold text-white"
+                  className="inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-navy px-4 py-2.5 text-sm font-semibold text-white"
                 >
-                  <Phone className="h-4 w-4" />
+                  <Phone className="h-4 w-4" aria-hidden />
                   Call now
                 </a>
                 <button
                   type="button"
-                  className="rounded-md border border-navy/15 px-4 py-2.5 text-sm font-semibold text-navy"
+                  className="min-h-11 rounded-md border border-navy/15 px-4 py-2.5 text-sm font-semibold text-navy"
                   onClick={() => {
-                    setSubmitted(false)
+                    setPrepared(false)
                     setChannel(null)
                     setForm(initial)
+                    setErrors({})
                   }}
                 >
-                  Submit another enquiry
+                  Edit / prepare another enquiry
                 </button>
               </div>
             </div>
           ) : (
             <form className="grid gap-4 sm:grid-cols-2" onSubmit={onSubmit} noValidate>
               <Field
-                label="Full Name"
-                value={form.fullName}
-                error={errors.fullName}
-                onChange={(v) => update("fullName", v)}
+                label="Name"
+                value={form.name}
+                error={errors.name}
+                autoComplete="name"
+                onChange={(v) => update("name", v)}
               />
               <Field
                 label="Company / Society Name"
                 value={form.companyName}
                 error={errors.companyName}
+                autoComplete="organization"
                 onChange={(v) => update("companyName", v)}
               />
               <Field
-                label="Email"
-                type="email"
-                value={form.email}
-                error={errors.email}
-                onChange={(v) => update("email", v)}
-              />
-              <Field
                 label="Phone Number"
+                type="tel"
                 value={form.phone}
                 error={errors.phone}
+                autoComplete="tel"
+                inputMode="tel"
                 onChange={(v) => update("phone", v)}
               />
-              <Select
-                label="Industry"
-                value={form.industry}
-                error={errors.industry}
-                onChange={(v) => update("industry", v)}
-                options={[
-                  "Manufacturing & Factories",
-                  "Infrastructure & Construction",
-                  "Mining & Minerals",
-                  "Corporate Offices & IT Parks",
-                  "Tourism & Hospitality",
-                  "Warehousing & Logistics",
-                  "Healthcare & Institutions",
-                  "Residential Communities",
-                  "Other",
-                ]}
+              <Field
+                label="City"
+                value={form.city}
+                error={errors.city}
+                placeholder="e.g. Jaipur"
+                autoComplete="address-level2"
+                onChange={(v) => update("city", v)}
               />
               <Select
-                label="Required Security Service"
+                label="Security Service Required"
                 value={form.service}
                 error={errors.service}
                 onChange={(v) => update("service", v)}
-                options={[
-                  "Industrial Security",
-                  "Corporate Security",
-                  "Residential Security",
-                  "Security Guard Services",
-                  "Executive Protection",
-                  "Security Audits",
-                  "Other / Multiple",
-                ]}
+                options={formServices}
               />
               <Field
-                label="Site Location (City)"
-                value={form.location}
-                error={errors.location}
-                onChange={(v) => update("location", v)}
-                placeholder="e.g. Jaipur, Bhiwadi, Kota"
-              />
-              <Field
-                label="Estimated Personnel Required"
-                value={form.personnel}
-                error={errors.personnel}
-                onChange={(v) => update("personnel", v)}
-                optional
+                label="Number of Guards Required"
+                type="number"
+                value={form.guards}
+                error={errors.guards}
+                inputMode="numeric"
+                min={1}
+                onChange={(v) => update("guards", v)}
               />
               <div className="sm:col-span-2">
-                <label className="mb-1.5 block text-sm font-semibold text-navy">
-                  Project Requirements
+                <label
+                  htmlFor="requirements"
+                  className="mb-1.5 block text-sm font-semibold text-navy"
+                >
+                  Additional Requirements
+                  <span className="font-normal text-ink/45"> (optional)</span>
                 </label>
                 <textarea
+                  id="requirements"
                   rows={4}
                   value={form.requirements}
                   onChange={(e) => update("requirements", e.target.value)}
                   className="w-full rounded-md border border-navy/15 px-3 py-2.5 text-sm outline-none transition focus:border-gold"
                   placeholder="Site type, shifts, gates, special concerns…"
                 />
-                {errors.requirements ? (
-                  <p className="mt-1 text-xs text-red-600">{errors.requirements}</p>
-                ) : null}
               </div>
               <div className="flex flex-col gap-3 sm:col-span-2 sm:flex-row">
                 <button
                   type="submit"
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-gold px-5 py-3.5 text-sm font-bold text-navy-dark transition hover:bg-gold-soft sm:w-auto"
+                  className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-md bg-gold px-5 py-3.5 text-sm font-bold text-navy-dark transition hover:bg-gold-soft sm:w-auto"
                 >
                   <WhatsAppIcon className="h-4 w-4" />
                   Send via WhatsApp
                 </button>
                 <button
                   type="button"
-                  onClick={() => sendEnquiry("email")}
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-md border border-navy/15 bg-white px-5 py-3.5 text-sm font-bold text-navy transition hover:border-gold/50 sm:w-auto"
+                  onClick={() => prepareEnquiry("email")}
+                  className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-md border border-navy/15 bg-white px-5 py-3.5 text-sm font-bold text-navy transition hover:border-gold/50 sm:w-auto"
                 >
-                  <Mail className="h-4 w-4 text-gold" />
+                  <Mail className="h-4 w-4 text-gold" aria-hidden />
                   Send via Email
                 </button>
               </div>
@@ -297,31 +282,45 @@ function Field({
   onChange,
   error,
   type = "text",
-  optional,
   placeholder,
+  autoComplete,
+  inputMode,
+  min,
 }: {
   label: string
   value: string
   onChange: (value: string) => void
   error?: string
   type?: string
-  optional?: boolean
   placeholder?: string
+  autoComplete?: string
+  inputMode?: "tel" | "numeric" | "text"
+  min?: number
 }) {
+  const id = label.toLowerCase().replace(/[^a-z0-9]+/g, "-")
   return (
     <div>
-      <label className="mb-1.5 block text-sm font-semibold text-navy">
+      <label htmlFor={id} className="mb-1.5 block text-sm font-semibold text-navy">
         {label}
-        {optional ? <span className="font-normal text-ink/45"> (optional)</span> : null}
       </label>
       <input
+        id={id}
         type={type}
         value={value}
         placeholder={placeholder}
+        autoComplete={autoComplete}
+        inputMode={inputMode}
+        min={min}
+        aria-invalid={Boolean(error)}
+        aria-describedby={error ? `${id}-error` : undefined}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full rounded-md border border-navy/15 px-3 py-2.5 text-sm outline-none transition focus:border-gold"
+        className="min-h-11 w-full rounded-md border border-navy/15 px-3 py-2.5 text-sm outline-none transition focus:border-gold"
       />
-      {error ? <p className="mt-1 text-xs text-red-600">{error}</p> : null}
+      {error ? (
+        <p id={`${id}-error`} className="mt-1 text-xs text-red-600">
+          {error}
+        </p>
+      ) : null}
     </div>
   )
 }
@@ -339,13 +338,19 @@ function Select({
   options: string[]
   error?: string
 }) {
+  const id = label.toLowerCase().replace(/[^a-z0-9]+/g, "-")
   return (
     <div>
-      <label className="mb-1.5 block text-sm font-semibold text-navy">{label}</label>
+      <label htmlFor={id} className="mb-1.5 block text-sm font-semibold text-navy">
+        {label}
+      </label>
       <select
+        id={id}
         value={value}
+        aria-invalid={Boolean(error)}
+        aria-describedby={error ? `${id}-error` : undefined}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full rounded-md border border-navy/15 bg-white px-3 py-2.5 text-sm outline-none transition focus:border-gold"
+        className="min-h-11 w-full rounded-md border border-navy/15 bg-white px-3 py-2.5 text-sm outline-none transition focus:border-gold"
       >
         <option value="">Select</option>
         {options.map((option) => (
@@ -354,7 +359,11 @@ function Select({
           </option>
         ))}
       </select>
-      {error ? <p className="mt-1 text-xs text-red-600">{error}</p> : null}
+      {error ? (
+        <p id={`${id}-error`} className="mt-1 text-xs text-red-600">
+          {error}
+        </p>
+      ) : null}
     </div>
   )
 }
