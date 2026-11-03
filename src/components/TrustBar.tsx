@@ -37,18 +37,27 @@ export function TrustBar() {
           </div>
         </div>
 
-        <div className="mt-10">
+        <div className="mt-12">
           <p className="text-center text-xs font-semibold tracking-[0.16em] text-ink/45 uppercase">
             Organisations publicly listed as clients on marathonsecurity.in
           </p>
-          <div className="mt-5 flex flex-wrap items-center justify-center gap-2.5">
-            {clients.map((name) => (
-              <span
-                key={name}
-                className="rounded-md border border-navy/10 bg-white px-3 py-2 text-xs font-medium text-navy/80"
+
+          <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-6">
+            {clients.map((client) => (
+              <div
+                key={client.name}
+                className="group flex h-[104px] flex-col items-center justify-center gap-2 rounded-xl border border-navy/10 bg-white px-3 py-4 transition hover:-translate-y-0.5 hover:border-gold/40 hover:shadow-[0_12px_28px_rgba(16,36,58,0.08)]"
               >
-                {name}
-              </span>
+                <img
+                  src={client.logo}
+                  alt={`${client.name} logo`}
+                  className="max-h-10 w-auto max-w-[120px] object-contain opacity-90 transition group-hover:opacity-100"
+                  loading="lazy"
+                />
+                <p className="line-clamp-2 text-center text-[11px] leading-snug font-medium text-navy/70">
+                  {client.name}
+                </p>
+              </div>
             ))}
           </div>
         </div>

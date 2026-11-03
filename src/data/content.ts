@@ -29,20 +29,34 @@ export const trustItems = [
   "Customized Security Solutions",
 ]
 
-/** Client names publicly listed on marathonsecurity.in */
+/** Client logos/names publicly listed on marathonsecurity.in */
+const clientLogo = (file: string) =>
+  `https://marathonsecurity.in/images/clients/${encodeURIComponent(file)}`
+
 export const clients = [
-  "Adani Ports and Logistics",
-  "Afcons",
-  "Cemindia Projects",
-  "L&T",
-  "Schneider Electric",
-  "Thermax",
-  "ITD Cementation",
-  "KEC",
-  "HG Infra",
-  "JWIL",
-  "Zetwerk",
-  "Nuvoco",
+  { name: "Adani Ports and Logistics", logo: clientLogo("adani.png") },
+  { name: "Afcons", logo: clientLogo("afcons.png") },
+  { name: "Cemindia Projects", logo: clientLogo("cemindia.png") },
+  { name: "GLC", logo: clientLogo("GLC.png") },
+  { name: "GPT Group", logo: clientLogo("GPT Group.png") },
+  { name: "HG Infra", logo: clientLogo("HG infra.png") },
+  { name: "KEC", logo: clientLogo("KEC.png") },
+  { name: "L&T", logo: clientLogo("LandT.png") },
+  { name: "Mahathi", logo: clientLogo("Mahathi.png") },
+  { name: "MEIL", logo: clientLogo("Meil.png") },
+  { name: "Mycon", logo: clientLogo("mycon.png") },
+  { name: "NRP", logo: clientLogo("nrp.png") },
+  { name: "Nuvoco", logo: clientLogo("Nuvoco.png") },
+  { name: "PAN HR", logo: clientLogo("Pan HR.png") },
+  { name: "Riyasat", logo: clientLogo("Riyasat.png") },
+  { name: "SCC", logo: clientLogo("Scc.png") },
+  { name: "Schneider Electric", logo: clientLogo("schneider.png") },
+  { name: "Spectrum Printech", logo: clientLogo("Spectrum Printech.png") },
+  { name: "ITD Cementation", logo: clientLogo("ITD Cementation.png") },
+  { name: "JWIL", logo: clientLogo("jwil.png") },
+  { name: "Thermax", logo: clientLogo("Thermax.png") },
+  { name: "Vision Trade", logo: clientLogo("Vision Trade.png") },
+  { name: "Zetwerk", logo: clientLogo("Zetwerk.png") },
 ]
 
 export const aboutFeatures = [
