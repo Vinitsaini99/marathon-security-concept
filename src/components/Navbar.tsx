@@ -68,7 +68,7 @@ export function Navbar() {
             href="#contact"
             className="rounded-md bg-navy px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-navy-dark"
           >
-            Request a Quote
+            Get a Free Quote
           </a>
         </div>
 
@@ -109,7 +109,7 @@ export function Navbar() {
               className="mt-1 rounded-md bg-gold px-4 py-3 text-center text-sm font-semibold text-navy-dark"
               onClick={() => setOpen(false)}
             >
-              Request a Quote
+              Get a Free Quote
             </a>
           </div>
         </div>

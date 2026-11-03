@@ -9,24 +9,27 @@ export const company = {
   headOffice: "Head Office — Jaipur, Rajasthan",
   corporateOffice: "Corporate Office — Ahmedabad, Gujarat",
   coverage:
-    "Servicing sites across North and Western India, including industrial hubs, infrastructure projects, and metro centres.",
+    "Security coverage across key Rajasthan cities and industrial corridors, with reach into North and Western India.",
   motto: "Reliability, Quality, and Results",
   referenceSite: "https://marathonsecurity.in/",
+  experienceYears: "10+",
+  experienceLabel: "Years of verified security experience",
 }
 
 export const navLinks = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
+  { label: "Coverage", href: "#coverage" },
   { label: "Industries", href: "#industries" },
   { label: "Why Choose Us", href: "#why-us" },
   { label: "Contact", href: "#contact" },
 ]
 
 export const trustItems = [
-  "Trained Security Personnel",
-  "Professional Supervision",
-  "Customized Security Solutions",
+  "Verified field experience",
+  "Recognised enterprise clients",
+  "ISO 9001:2015 certified",
 ]
 
 /** Client logos/names publicly listed on marathonsecurity.in */
@@ -78,17 +81,42 @@ export const aboutFeatures = [
   },
 ]
 
-export const services = [
+/** Primary service pillars highlighted on the landing page */
+export const primaryServices = [
   {
     title: "Industrial Security",
-    text: "Specialized security management for factories, manufacturing facilities, warehouses and large industrial plants.",
+    text: "Specialized security management for factories, manufacturing plants, warehouses, mines and large industrial campuses across Rajasthan.",
+    points: [
+      "Gate & perimeter control",
+      "Shift-based plant coverage",
+      "Material movement oversight",
+    ],
     href: "#contact",
   },
   {
     title: "Corporate Security",
-    text: "Professional guarding and supervision for corporate offices, commercial centres and business premises.",
+    text: "Professional guarding and supervision for corporate offices, commercial centres, IT parks and business premises.",
+    points: [
+      "Access & visitor management",
+      "Lobby and floor presence",
+      "After-hours monitoring",
+    ],
     href: "#contact",
   },
+  {
+    title: "Residential Security",
+    text: "Round-the-clock security for gated communities, apartment complexes, townships and residential societies.",
+    points: [
+      "24×7 gate vigilance",
+      "Visitor & vendor screening",
+      "Patrol and emergency response",
+    ],
+    href: "#contact",
+  },
+]
+
+export const services = [
+  ...primaryServices.map(({ title, text, href }) => ({ title, text, href })),
   {
     title: "Security Guard Services",
     text: "Trained security guards for round-the-clock vigilance, access control and disciplined site presence.",
@@ -104,34 +132,58 @@ export const services = [
     text: "Independent assessments focused on vulnerabilities, compliance benchmarks and risk-mitigation effectiveness.",
     href: "#contact",
   },
-  {
-    title: "Asset Protection",
-    text: "Protection support for physical inventory, transit consignments, high-value materials and critical assets.",
-    href: "#contact",
-  },
+]
+
+export const rajasthanCities = [
+  { name: "Jaipur", note: "Head office hub" },
+  { name: "Jodhpur", note: "Industrial & commercial" },
+  { name: "Udaipur", note: "Hospitality & industry" },
+  { name: "Kota", note: "Manufacturing corridor" },
+  { name: "Bhiwadi", note: "Industrial belt" },
+  { name: "Alwar", note: "Industrial & SEZ" },
+  { name: "Ajmer", note: "Institutional & commercial" },
+  { name: "Bhilwara", note: "Textile & industry" },
+  { name: "Neemrana", note: "Industrial corridor" },
+  { name: "Bharatpur", note: "Regional coverage" },
+  { name: "Sikar", note: "Regional coverage" },
+  { name: "Chittorgarh", note: "Cement & industry" },
 ]
 
 export const industries = [
   {
     title: "Manufacturing & Factories",
-    text: "Industrial plants and production sites requiring disciplined perimeter and shift-based coverage.",
+    text: "Industrial plants and production sites across Rajasthan requiring disciplined perimeter and shift-based coverage.",
     image:
       "https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?auto=format&fit=crop&w=1200&q=80",
     alt: "Manufacturing plant floor with industrial equipment",
   },
   {
     title: "Infrastructure & Construction",
-    text: "Project sites and infrastructure environments that need coordinated security deployment.",
+    text: "Project sites, highways and infrastructure environments that need coordinated security deployment.",
     image:
       "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1200&q=80",
     alt: "Active construction and infrastructure project site",
   },
   {
-    title: "Corporate Offices",
+    title: "Mining & Minerals",
+    text: "Mining operations and mineral processing sites needing perimeter control and workforce management.",
+    image:
+      "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1200&q=80",
+    alt: "Heavy industrial and mining equipment site",
+  },
+  {
+    title: "Corporate Offices & IT Parks",
     text: "Office campuses and commercial workplaces focused on access control and visitor management.",
     image:
       "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80",
     alt: "Modern corporate office building exterior",
+  },
+  {
+    title: "Tourism & Hospitality",
+    text: "Hotels, resorts and hospitality properties that require discreet, guest-friendly security presence.",
+    image:
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80",
+    alt: "Hospitality and resort property exterior",
   },
   {
     title: "Warehousing & Logistics",
@@ -141,15 +193,15 @@ export const industries = [
     alt: "Warehouse aisle with stacked inventory and logistics operations",
   },
   {
-    title: "Healthcare",
-    text: "Healthcare premises that require orderly access, calm presence and reliable post coverage.",
+    title: "Healthcare & Institutions",
+    text: "Hospitals, clinics and institutions that require orderly access, calm presence and reliable post coverage.",
     image:
       "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1200&q=80",
     alt: "Healthcare facility corridor and reception environment",
   },
   {
     title: "Residential Communities",
-    text: "Gated communities and residential premises supported by round-the-clock monitoring.",
+    text: "Gated societies, townships and residential premises supported by round-the-clock monitoring.",
     image:
       "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80",
     alt: "Residential community and apartment buildings",
@@ -248,27 +300,27 @@ export const sampleCaseStudies = [
 export const faqs = [
   {
     q: "How can we request security services?",
-    a: "Share your requirement through the enquiry form, call +91-9690683851, or email info@marathonsecurity.in. The team can arrange a discussion and site assessment based on your needs.",
+    a: "Share your requirement through the enquiry form, call +91-9690683851, WhatsApp the team, or email info@marathonsecurity.in. A discussion and site assessment can be arranged based on your needs.",
   },
   {
     q: "How are security personnel verified?",
     a: "According to the company’s public information, personnel undergo background checks, address authentication, character verification and local police verification before placement.",
   },
   {
-    q: "Do you provide industrial security?",
-    a: "Yes. Industrial security is part of the published service offering, covering factories, manufacturing facilities, warehouses and large industrial plants.",
+    q: "Do you provide industrial, corporate and residential security?",
+    a: "Yes. Marathon Security offers dedicated industrial, corporate and residential security services, along with guarding, executive protection and security audits.",
+  },
+  {
+    q: "Which cities in Rajasthan do you cover?",
+    a: "Primary coverage includes Jaipur, Jodhpur, Udaipur, Kota, Bhiwadi, Alwar, Ajmer, Bhilwara, Neemrana and other key industrial and commercial centres across Rajasthan.",
   },
   {
     q: "How is security deployment planned?",
-    a: "For standard corporate or industrial contracts, a site security survey informs a customized deployment plan. Emergency requirements may be organized on a faster timeline based on availability.",
+    a: "For standard corporate, industrial or residential contracts, a site security survey informs a customized deployment plan. Emergency requirements may be organized on a faster timeline based on availability.",
   },
   {
-    q: "Which locations do you serve?",
-    a: "Zetouch Security lists a Head Office in Jaipur (Rajasthan) and a Corporate Office in Ahmedabad (Gujarat), with coverage across North and Western India.",
-  },
-  {
-    q: "How can businesses request a quotation?",
-    a: "Use the proposal form on this page with site details and required services, or contact the team directly by phone or email for a tailored discussion.",
+    q: "How can businesses request a free quote?",
+    a: "Use the enquiry form on this page, or contact the team directly by phone or WhatsApp with your site details and required services for a tailored discussion.",
   },
 ]
 

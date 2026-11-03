@@ -1,38 +1,58 @@
-import { Award, Building2, MapPinned } from "lucide-react"
+import { Award, BriefcaseBusiness, Users } from "lucide-react"
 import { clients, company } from "../data/content"
 
 export function TrustBar() {
   return (
     <section className="border-b border-navy/8 bg-surface">
       <div className="mx-auto max-w-[1440px] px-4 py-10 sm:px-6 lg:px-10">
-        <div className="grid gap-4 md:grid-cols-3">
+        <p className="text-center text-xs font-semibold tracking-[0.16em] text-ink/45 uppercase">
+          Verified trust signals
+        </p>
+
+        <div className="mt-6 grid gap-4 sm:grid-cols-3">
           <div className="flex items-start gap-3 rounded-xl bg-white p-5 shadow-[0_1px_0_rgba(16,36,58,0.04)]">
-            <Award className="mt-0.5 h-5 w-5 text-gold" />
+            <BriefcaseBusiness className="mt-0.5 h-5 w-5 shrink-0 text-gold" />
             <div>
-              <p className="font-heading text-sm font-bold text-navy">{company.iso}</p>
+              <p className="font-heading text-2xl font-extrabold text-navy">
+                {company.experienceYears}
+              </p>
+              <p className="mt-1 text-sm font-semibold text-navy">
+                {company.experienceLabel}
+              </p>
+              <p className="mt-1 text-sm text-ink/65">
+                Public materials describe a decade of security and allied services across
+                industrial and corporate environments.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-start gap-3 rounded-xl bg-white p-5">
+            <Users className="mt-0.5 h-5 w-5 shrink-0 text-gold" />
+            <div>
+              <p className="font-heading text-2xl font-extrabold text-navy">
+                {clients.length}+
+              </p>
+              <p className="mt-1 text-sm font-semibold text-navy">
+                Clients listed on the official website
+              </p>
+              <p className="mt-1 text-sm text-ink/65">
+                Enterprise and infrastructure organisations publicly associated with
+                Marathon Security / Zetouch.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-start gap-3 rounded-xl bg-white p-5">
+            <Award className="mt-0.5 h-5 w-5 shrink-0 text-gold" />
+            <div>
+              <p className="font-heading text-lg font-extrabold text-navy sm:text-xl">
+                ISO 9001:2015
+              </p>
+              <p className="mt-1 text-sm font-semibold text-navy">Certified organization</p>
               <p className="mt-1 text-sm text-ink/65">
                 Listed on the company’s public website as an ISO 9001:2015 certified
                 organization.
               </p>
-            </div>
-          </div>
-          <div className="flex items-start gap-3 rounded-xl bg-white p-5">
-            <Building2 className="mt-0.5 h-5 w-5 text-gold" />
-            <div>
-              <p className="font-heading text-sm font-bold text-navy">
-                Corporate security experience
-              </p>
-              <p className="mt-1 text-sm text-ink/65">
-                Public materials describe a decade of security and allied services
-                across industrial and corporate environments.
-              </p>
-            </div>
-          </div>
-          <div className="flex items-start gap-3 rounded-xl bg-white p-5">
-            <MapPinned className="mt-0.5 h-5 w-5 text-gold" />
-            <div>
-              <p className="font-heading text-sm font-bold text-navy">Industry coverage</p>
-              <p className="mt-1 text-sm text-ink/65">{company.coverage}</p>
             </div>
           </div>
         </div>
@@ -46,12 +66,12 @@ export function TrustBar() {
             {clients.map((client) => (
               <div
                 key={client.name}
-                className="group flex h-[104px] flex-col items-center justify-center gap-2 rounded-xl border border-navy/10 bg-white px-3 py-4 transition hover:-translate-y-0.5 hover:border-gold/40 hover:shadow-[0_12px_28px_rgba(16,36,58,0.08)]"
+                className="group flex h-[96px] flex-col items-center justify-center gap-2 rounded-xl border border-navy/10 bg-white px-3 py-4 transition hover:-translate-y-0.5 hover:border-gold/40 hover:shadow-[0_12px_28px_rgba(16,36,58,0.08)] sm:h-[104px]"
               >
                 <img
                   src={client.logo}
                   alt={`${client.name} logo`}
-                  className="max-h-10 w-auto max-w-[120px] object-contain opacity-90 transition group-hover:opacity-100"
+                  className="max-h-9 w-auto max-w-[110px] object-contain opacity-90 transition group-hover:opacity-100 sm:max-h-10 sm:max-w-[120px]"
                   loading="lazy"
                 />
                 <p className="line-clamp-2 text-center text-[11px] leading-snug font-medium text-navy/70">

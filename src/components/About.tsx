@@ -3,7 +3,7 @@ import { SectionHeading } from "./SectionHeading"
 
 export function About() {
   return (
-    <section id="about" className="bg-white py-20 sm:py-24">
+    <section id="about" className="bg-white py-16 sm:py-20 lg:py-24">
       <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10">
         <div className="reveal">
           <SectionHeading
@@ -13,12 +13,12 @@ export function About() {
           />
         </div>
 
-        <div className="mt-14 grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
+        <div className="mt-10 grid items-center gap-8 sm:mt-14 sm:gap-10 lg:grid-cols-2 lg:gap-14">
           <div className="reveal overflow-hidden rounded-2xl">
             <img
               src={images.about}
               alt="Professional team coordinating security operations"
-              className="h-full min-h-[420px] w-full object-cover"
+              className="h-full min-h-[260px] w-full object-cover sm:min-h-[360px] lg:min-h-[420px]"
               loading="lazy"
             />
           </div>

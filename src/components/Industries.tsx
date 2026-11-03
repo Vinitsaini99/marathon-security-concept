@@ -3,23 +3,23 @@ import { SectionHeading } from "./SectionHeading"
 
 export function Industries() {
   return (
-    <section id="industries" className="bg-white py-20 sm:py-24">
+    <section id="industries" className="bg-white py-16 sm:py-20 lg:py-24">
       <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10">
         <div className="reveal">
           <SectionHeading
-            eyebrow="Industries We Serve"
-            title="Built for complex operating environments"
-            text="From manufacturing floors to corporate campuses, coverage is planned around the realities of each site."
+            eyebrow="Industries in Rajasthan"
+            title="Built for Rajasthan’s operating environments"
+            text="From manufacturing corridors and mining sites to hospitality, offices and residential communities — coverage planned around each site."
           />
         </div>
 
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-10 grid gap-4 sm:mt-14 sm:grid-cols-2 sm:gap-5 xl:grid-cols-4">
           {industries.map((item) => (
             <article
               key={item.title}
               className="reveal group overflow-hidden rounded-2xl border border-navy/10 bg-surface transition hover:-translate-y-1 hover:border-gold/35 hover:shadow-[0_18px_40px_rgba(16,36,58,0.1)]"
             >
-              <div className="relative h-52 overflow-hidden sm:h-56">
+              <div className="relative h-44 overflow-hidden sm:h-52">
                 <img
                   src={item.image}
                   alt={item.alt}
