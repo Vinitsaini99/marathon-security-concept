@@ -1,6 +1,7 @@
-import { CheckCircle2, Mail, MessageCircle, Phone } from "lucide-react"
+import { CheckCircle2, Mail, Phone } from "lucide-react"
 import { useState, type FormEvent } from "react"
 import { company } from "../data/content"
+import { WhatsAppIcon } from "./WhatsAppIcon"
 
 type FormState = {
   fullName: string
@@ -79,12 +80,14 @@ export function LeadForm() {
               Call {company.phoneDisplay}
             </a>
             <a
-              href={`https://wa.me/${company.whatsapp}`}
+              href={`https://wa.me/${company.whatsapp}?text=${encodeURIComponent(
+                "Hello Marathon Security, I would like to discuss a security requirement.",
+              )}`}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
             >
-              <MessageCircle className="h-4 w-4 text-gold" />
+              <WhatsAppIcon className="h-4 w-4 text-[#25D366]" />
               WhatsApp enquiry
             </a>
             <a
