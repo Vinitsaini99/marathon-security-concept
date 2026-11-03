@@ -101,26 +101,44 @@ export const industries = [
   {
     title: "Manufacturing & Factories",
     text: "Industrial plants and production sites requiring disciplined perimeter and shift-based coverage.",
+    image:
+      "https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?auto=format&fit=crop&w=1200&q=80",
+    alt: "Manufacturing plant floor with industrial equipment",
   },
   {
     title: "Infrastructure & Construction",
     text: "Project sites and infrastructure environments that need coordinated security deployment.",
+    image:
+      "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1200&q=80",
+    alt: "Active construction and infrastructure project site",
   },
   {
     title: "Corporate Offices",
     text: "Office campuses and commercial workplaces focused on access control and visitor management.",
+    image:
+      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80",
+    alt: "Modern corporate office building exterior",
   },
   {
     title: "Warehousing & Logistics",
     text: "Storage and logistics facilities where asset movement and gate control are critical.",
+    image:
+      "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80",
+    alt: "Warehouse aisle with stacked inventory and logistics operations",
   },
   {
     title: "Healthcare",
     text: "Healthcare premises that require orderly access, calm presence and reliable post coverage.",
+    image:
+      "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1200&q=80",
+    alt: "Healthcare facility corridor and reception environment",
   },
   {
     title: "Residential Communities",
     text: "Gated communities and residential premises supported by round-the-clock monitoring.",
+    image:
+      "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80",
+    alt: "Residential community and apartment buildings",
   },
 ]
 
@@ -247,7 +265,5 @@ export const images = {
     "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1400&q=80",
   why:
     "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1400&q=80",
-  industry:
-    "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1200&q=80",
   logo: "https://marathonsecurity.in/images/logo.png",
 }

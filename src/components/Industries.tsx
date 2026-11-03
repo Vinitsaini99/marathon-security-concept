@@ -1,4 +1,4 @@
-import { industries, images } from "../data/content"
+import { industries } from "../data/content"
 import { SectionHeading } from "./SectionHeading"
 
 export function Industries() {
@@ -14,24 +14,27 @@ export function Industries() {
         </div>
 
         <div className="mt-14 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
-          {industries.map((item, index) => (
+          {industries.map((item) => (
             <article
               key={item.title}
-              className="reveal overflow-hidden rounded-2xl border border-navy/10 bg-surface"
+              className="reveal group overflow-hidden rounded-2xl border border-navy/10 bg-surface transition hover:-translate-y-1 hover:border-gold/35 hover:shadow-[0_18px_40px_rgba(16,36,58,0.1)]"
             >
-              {index === 0 ? (
+              <div className="relative h-52 overflow-hidden sm:h-56">
                 <img
-                  src={images.industry}
-                  alt=""
-                  className="h-40 w-full object-cover"
+                  src={item.image}
+                  alt={item.alt}
+                  className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.05]"
                   loading="lazy"
                 />
-              ) : (
-                <div className="h-2 w-full bg-gradient-to-r from-navy to-gold" />
-              )}
-              <div className="p-6">
-                <h3 className="font-heading text-lg font-bold text-navy">{item.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-ink/70">{item.text}</p>
+                <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/75 via-navy/20 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-5">
+                  <p className="font-heading text-lg font-bold text-white drop-shadow">
+                    {item.title}
+                  </p>
+                </div>
+              </div>
+              <div className="p-6 pt-5">
+                <p className="text-sm leading-relaxed text-ink/70">{item.text}</p>
               </div>
             </article>
           ))}
